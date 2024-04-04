@@ -1,0 +1,14 @@
+# Docker-Compose for CTF
+version: '3'
+services:
+  weakSSH:
+    build: ./containers/weakSSH
+    ports:
+      - "2222:22"
+    container_name: weakSSH
+    tty: true
+    stdin_open: true
+    restart: always
+    networks:
+      - ctf
+
