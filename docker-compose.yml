@@ -1,6 +1,16 @@
 # Docker-Compose for CTF
 version: '3'
 services:
+  MazeOfFiles:
+    build: ./containers/MazeOfFiles
+    ports:
+      - "8080:80"
+    container_name: MazeOfFiles
+    tty: true
+    stdin_open: true
+    restart: always
+    networks:
+      - ctf
   weakSSH:
     build: ./containers/weakSSH
     ports:
