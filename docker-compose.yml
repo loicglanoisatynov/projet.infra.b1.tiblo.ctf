@@ -24,23 +24,23 @@ services:
   #     - ctf
 
 # Autres options de premier niveau à définir
-networks:
-  ctf:
-    driver: bridge
-volumes:
-  ctf:
-configs:
-  ctf:
-    external: true
-secrets:
-  ctf:
-    external: true
-addons:
-  ctf:
-    external: true
-volumes_driver:
-  ctf:
-    external: true
-registries:
-  ctf:
-    external: true
+# networks:
+#   ctf:
+#     driver: bridge
+# volumes:
+#   ctf:
+# configs:
+#   ctf:
+#     external: true
+# secrets:
+#   ctf:
+#     external: true
+# addons:
+#   ctf:
+#     external: true
+# volumes_driver:
+#   ctf:
+#     external: true
+# registries:
+#   ctf:
+#     external: true
