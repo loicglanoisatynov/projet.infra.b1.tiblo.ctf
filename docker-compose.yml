@@ -12,21 +12,33 @@ services:
     networks:
       - ctf
 
-  # weakSSH:
-  #   build: ./containers/weakSSH
-  #   ports:
-  #     - "2222:22"
-  #   container_name: weakSSH
-  #   tty: true
-  #   stdin_open: true
-  #   restart: always
-  #   networks:
-  #     - ctf
+  weakSSH:
+    build: ./containers/weakSSH
+    ports:
+      - "2222:22"
+    container_name: weakSSH
+    command: sh -c "iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination dvwa:80 && /usr/sbin/sshd -D"
+    tty: true
+    stdin_open: true
+    restart: always
+    networks:
+      - ctf
+
+  dvwa:
+    build: ./containers/DVWA
+    ports:
+      - "8081:80"
+    container_name: DVWA
+    tty: true
+    stdin_open: true
+    restart: always
+    networks:
+      - ctf
 
 # Autres options de premier niveau à définir
-# networks:
-#   ctf:
-#     driver: bridge
+networks:
+  ctf:
+    driver: bridge
 # volumes:
 #   ctf:
 # configs:
