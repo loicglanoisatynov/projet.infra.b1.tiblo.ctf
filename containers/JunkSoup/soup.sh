@@ -1,16 +1,27 @@
 #!/bin/bash
 
-# Define the length of the chain
-length=5000
+# Define the set of non-letter characters
+non_letter_chars="!@#$%^&*()-_=+[{]};:'\",<.>/?\|"
 
-# Generate random non-letter characters
-chain=$(cat /dev/urandom | tr -dc '[:punct:]' | fold -w "$length" | head -n 1)
+# Define the length of the random string to generate
+length=50000
 
-# Chooses a random number in the chain
-random=$(($RANDOM % $length))
+# Function to generate a random non-letter character
+generate_random_char() {
+    local chars=$1
+    echo -n "${chars:$((RANDOM % ${#chars})):1}"
+}
 
-# Replace the character at the random position with the word "fire"
-chain="${chain:0:$random}fire${chain:$random+4}"
+# Generate the random string
+random_string=""
+for (( i=0; i<$length; i++ )); do
+    random_string="$random_string$(generate_random_char "$non_letter_chars")"
+done
 
-# Write the chain to a file
-echo "$chain" > soup.txt
+# Picks a random number in the string
+random_number=$(($RANDOM % $length))
+
+# Inserts the word "fire" at the random number
+random_string="${random_string:0:$random_number}fire${random_string:$random_number}"
+
+echo "$random_string" > soup.txt
