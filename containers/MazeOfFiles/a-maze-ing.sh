@@ -4,9 +4,11 @@
 # l'intérieur de l'arborescence.
 
 
-profondeur=2
-largeurrepertoire=2
+profondeur=5
+largeurrepertoire=5
 compteur=0
+
+echo 'timey:password' | chpasswd
 
 # Création de la structure de répertoires
 function creerRepertoires {
@@ -25,7 +27,13 @@ function creerRepertoires {
 
 function hidePassword {
     motdepasse="password1234"
-    echo $motdepasse > $((1 + RANDOM % $profondeur))/password.txt
+    # Hide the password in a random directory at the end of the maze
+    for i in $(seq 1 $largeurrepertoire); do
+        #select a random number between 1 and largeurrepertoire
+        x=$(($RANDOM % $largeurrepertoire + 1))
+        cd $x
+    done
+    echo $motdepasse > password.txt
 }
 
 creerRepertoires $profondeur

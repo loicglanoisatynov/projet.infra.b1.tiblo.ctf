@@ -1,6 +1,5 @@
 FROM alpine:latest
 RUN adduser -D -s / timey
-RUN echo 'root:booya' | chpasswd
 RUN apk add --no-cache --upgrade bash
 RUN apk update && apk add --no-cache \
     openssh \
@@ -23,17 +22,13 @@ RUN chmod -R 555 /home/timey
 # Sets the home directory as the working directory
 WORKDIR /home/timey
 
-# Takes the a-maze-ing.sh file and copies it to the container
-COPY ./a-maze-ing.sh /home/timey/a-maze-ing.sh
+# Takes the soup.sh file and copies it to the container
+COPY ./soup.sh /home/timey/soup.sh
 
 # Changes the permissions of the file to make it executable
-RUN chmod +x /home/timey/a-maze-ing.sh
-# RUN bash /home/timey/a-maze-ing.sh
+RUN chmod +x /home/timey/soup.sh
+# RUN bash /home/timey/soup.sh
 
-# Runs the a-maze-ing.sh file
-RUN ./a-maze-ing.sh
-RUN rm a-maze-ing.sh
-# CMD ["./a-maze-ing.sh"]
-
-# Changes the user to timey
-# USER timey
+# Runs the soup.sh file
+RUN ./soup.sh
+RUN rm soup.sh
