@@ -1,6 +1,10 @@
 FROM alpine:latest
-RUN adduser -D -s / timey
-RUN echo 'root:booya' | chpasswd
+# Attribution du mot de passe "inferno" à l'utilisateur "root"
+RUN echo "root:inferno" | chpasswd
+
+# Création d'un utilisateur "user" avec mot de passe "user"
+RUN adduser -D user
+RUN echo "user:user" | chpasswd
 RUN apk add --no-cache --upgrade bash
 RUN apk update && apk add --no-cache \
     openssh \
@@ -17,23 +21,23 @@ RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/s
 # Exécutez le serveur SSH lorsque le conteneur démarre
 CMD ["/usr/sbin/sshd", "-D"]
 
-# Sets the user timey as read-only
-RUN chmod -R 555 /home/timey
+# Sets the user user as read-only
+RUN chmod -R 555 /home/user
 
 # Sets the home directory as the working directory
-WORKDIR /home/timey
+WORKDIR /home/user
 
 # Takes the a-maze-ing.sh file and copies it to the container
-COPY ./a-maze-ing.sh /home/timey/a-maze-ing.sh
+COPY ./a-maze-ing.sh /home/user/a-maze-ing.sh
 
 # Changes the permissions of the file to make it executable
-RUN chmod +x /home/timey/a-maze-ing.sh
-# RUN bash /home/timey/a-maze-ing.sh
+RUN chmod +x /home/user/a-maze-ing.sh
+# RUN bash /home/user/a-maze-ing.sh
 
 # Runs the a-maze-ing.sh file
 RUN ./a-maze-ing.sh
 RUN rm a-maze-ing.sh
 # CMD ["./a-maze-ing.sh"]
 
-# Changes the user to timey
-# USER timey
+# Changes the user to user
+# USER user
