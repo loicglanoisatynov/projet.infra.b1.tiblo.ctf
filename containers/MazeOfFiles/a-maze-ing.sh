@@ -8,7 +8,7 @@ profondeur=5
 largeurrepertoire=5
 compteur=0
 
-echo 'timey:password' | chpasswd
+# echo 'user:password' | chpasswd
 
 # Création de la structure de répertoires
 function creerRepertoires {

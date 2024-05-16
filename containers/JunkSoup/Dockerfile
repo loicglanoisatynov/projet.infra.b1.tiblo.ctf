@@ -1,6 +1,6 @@
 FROM alpine:latest
 RUN adduser -D user
-RUN echo "user:user" | chpasswd
+RUN echo "user:password" | chpasswd
 
 RUN apk add --no-cache --upgrade bash
 RUN apk update && apk add --no-cache \
@@ -11,7 +11,7 @@ RUN apk update && apk add --no-cache \
 RUN ssh-keygen -A
 
 # Dans le fichier /etc/ssh/sshd_config, paramétrer le port ouvert sur le 22, et PermitRootLogin sur "no"
-RUN sed -i 's/#Port 22/Port 22/' /etc/ssh/sshd_config
+RUN sed -i 's/#Port 22/Port 23/' /etc/ssh/sshd_config
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config
 
 
@@ -38,3 +38,5 @@ RUN rm soup.sh
 RUN echo "Welcome to the Junk Soup!" > /etc/motd
 RUN echo "You have to find the flag in a really, really messy file." >> /etc/motd
 RUN echo "Good luck!" >> /etc/motd
+
+# EXPOSE 23

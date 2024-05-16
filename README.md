@@ -71,26 +71,75 @@ Pour réinitialiser le dossier (suite à une mauvaise manipulation par exemple),
     git reset --hard
     ```
 
+Pour réinitialiser le docker-compose, vous pouvez utiliser la commande suivante :
 
+    ```bash
+    docker-compose down -v
+    ```
+
+Pour jouer à plusieurs, vous pouvez partager l'adresse IP de votre machine avec les autres joueurs. Pour cela, vous pouvez utiliser la commande suivante :
+
+    ```bash
+    ipconfig
+    ```
+
+Vos camarades pourront alors se connecter à votre machine en utilisant l'adresse IP affichée dans la console, que vous mettrez à la place de `localhost` dans les instructions ci-dessous.
 
 ## CTFs
 
 ### Conteneur 1 : MazeOfFiles
 
-Ce CTF est un labyrinthe de fichiers dans lequel vous devrez trouver le fichier `password.txt`. Pour cela, vous devrez vous connecter au conteneur et naviguer dans les fichiers pour trouver le bon fichier, ou trouver un moyen de le chercher plus efficacement. Vous devrez vous y connecter en tant qu'utilisateur `timey` avec pour mot de passe `password1234`.
+Ce CTF est un labyrinthe de fichiers dans lequel vous devrez trouver le fichier `password.txt`. Pour cela, vous devrez vous connecter au conteneur et naviguer dans les fichiers pour trouver le bon fichier, ou trouver un moyen de le chercher plus efficacement. Vous devrez vous y connecter en tant qu'utilisateur `user` avec pour mot de passe `password`.
+
+<img src="resources/maze.png" alt="Un répertoire bien mystérieux vous attend ici." />
 
 ### Conteneur 2 : JunkSoup
 
-Ce CTF consiste en un long fichier de caractères aléatoires dans lequel se cache un flag. Vous devrez trouver un moyen de retrouver le flag dans ce fichier. Vous devrez vous y connecter en tant qu'utilisateur `timey` avec pour mot de passe `password1234`.
+Ce CTF consiste en un long fichier de caractères aléatoires dans lequel se cache un flag. Vous devrez trouver un moyen de retrouver le flag dans ce fichier. Vous devrez vous y connecter en tant qu'utilisateur `user` avec pour mot de passe `password`.
+
+<img src="resources/soup.png" alt="Un fichier bien bordélique." />
 
 ### Conteneur 3 : weakSSH
 
 Ce CTF est un serveur SSH sur lequel vous devrez vous connecter. Pour cela, vous devrez trouver le mot de passe de l'utilisateur `user`. Pourquoi ne pas essayer une attaque par mot de passe ? Le flag est le mot de passe de l'utilisateur `user`.
 
-### Conteneur 4 : DVWA-SQL
+### Conteneur 4 : DVWA-SQL :computer:
 
 Ce CTF est une instance de Damn Vulnerable Web Application (DVWA) dans laquelle vous devrez trouver un moyen de récupérer le flag en exploitant une faille SQL. Récupérer le last_name de l'utilisateur `HackMe` pour valider le CTF. 
 
+Pour le lancer individuellement, vous pouvez utiliser la commande suivante :
+
+    ```bash
+    docker build -t dvwa .
+    docker run -d -p 80:80 dvwa
+    ```
+
+<img src="resources/dvwa-login.png" alt="Renseignez ici les identifiants de connexion" />
+
+Sur votre navigateur rendez-vous à l'adresse : http://localhost:80
+
+L'identifiant utilisateur est : admin
+
+Le mot de passe est : password
+
+<img src="resources/dvwa-setup.png" alt="Vous voici sur la page de setup de DVWA. Créez la base de données !" />
+
+Une fois sur la page setup.php, lancez la création de la base de données, après quoi vous serez redirigé vers la page index.php. Rendez-vous ensuite dans l'onglet SQL Injection pour réaliser le CTF. (Profitez-en pour vous familiariser avec les autres failles de DVWA ! Beaucoup de documentation est disponible sur le web.)
+
+<img src="resources/dvwa-index.png" alt="Vous voici sur la page principale de DVWA. Bon courage !" />
+
 ### Flag-Checker
 
-Pour valider un CTF, vous devrez utiliser le flag checker. Pour cela, vous devrez vous connecter au conteneur `flag-checker` en tant qu'utilisateur `timey` avec pour mot de passe `password1234`. Vous pourrez ensuite utiliser la commande `./flag-checker.sh` pour valider un flag.
+Pour valider un CTF, vous devrez vous rendre sur le site web à l'adresse http://localhost:8080 que vous aurez lancé avec la commande
+    ```bash
+    go run site/main.go
+    ```
+et renseigner le flag que vous avez trouvé. Si le flag est correct, vous verrez un message de validation. Sinon, vous verrez un message d'erreur.
+
+## Auteurs
+
+Ce projet a été réalisé par Tibor LASSALLE et Loïc GLANOIS, étudiants en B1 Informatique à Lyon Ynov Campus.
+
+## Licence
+
+Ce projet est sous licence GNU GPL v3.0. Vous pouvez consulter le fichier LICENSE pour plus d'informations.

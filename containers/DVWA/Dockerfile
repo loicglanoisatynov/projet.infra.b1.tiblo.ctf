@@ -6,6 +6,3 @@ FROM vulnerables/web-dvwa
 # navigateur : http://localhost:80
 # user: admin
 # password: password
-
-
-

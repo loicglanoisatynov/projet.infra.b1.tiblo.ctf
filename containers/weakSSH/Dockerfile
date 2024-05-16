@@ -4,7 +4,7 @@
     # Pour accéder au conteneur depuis l'utilitaire Docker : 
     # docker exec -it <container_id_récupéré par docker_ps> sh
     # Pour accéder au conteneur depuis un terminal : ssh <user>@<server> -p 22
-    # Pour réinitialiser le certificat : sh-keygen -R "[localhost]:2222"
+    # Pour réinitialiser le certificat : ssh-keygen -R "[localhost]:2222"
     # Attaque par force brute : sudo hydra -l user -P ./richelieu.txt ssh://localhost:2222 -vvv -I
 
 # Dockerfile pour le conteneur crackSSH. Le rôle du Dockerfile est de créer une image Docker à partir de laquelle 
@@ -34,12 +34,14 @@ RUN sh /home/user/richelieu.sh
 RUN ssh-keygen -A
 
 # Dans le fichier /etc/ssh/sshd_config, paramétrer le port ouvert sur le 22, et PermitRootLogin sur "no"
-RUN sed -i 's/#Port 22/Port 22/' /etc/ssh/sshd_config
+RUN sed -i 's/#Port 22/Port 24/' /etc/ssh/sshd_config
 # Sinon, pour le mode prod, on met PermitRootLogin sur "no"
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config
 RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
-EXPOSE 22
+# EXPOSE 22
 
 
 # Exécutez le serveur SSH lorsque le conteneur démarre
 CMD ["/usr/sbin/sshd", "-D"]
+
+EXPOSE 24
