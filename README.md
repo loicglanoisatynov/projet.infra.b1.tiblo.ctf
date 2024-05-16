@@ -50,6 +50,15 @@ Au lancement de docker-compose :
 Si il s'est terminé correctement, voici ce que vous devriez voir :
 <img src="resources/docker-compose-finished.png" alt="Que voilà un docker-compose bien terminé !" />
 
+Lancez ensuite le serveur Golang avec la commande go run :
+
+    ```bash
+    go run site/main.go
+    ```
+
+Vous pouvez maintenant accéder au site web à l'adresse suivante : http://localhost:8080.
+<img src="resources/flag-check.png" alt="Ici, votre flag reposera !" />
+
 Pour arrêter les conteneurs, utilisez la commande suivante :
 
     ```bash
@@ -61,6 +70,8 @@ Pour réinitialiser le dossier (suite à une mauvaise manipulation par exemple),
     ```bash
     git reset --hard
     ```
+
+
 
 ## CTFs
 

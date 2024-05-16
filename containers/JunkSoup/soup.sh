@@ -2,6 +2,7 @@
 
 # Define the set of non-letter characters
 non_letter_chars="!@#$%^&*()-_=+[{]};:'\",<.>/?\|"
+password="w0nD3rFul"
 
 # Define the length of the random string to generate
 length=50000
@@ -22,6 +23,6 @@ done
 random_number=$(($RANDOM % $length))
 
 # Inserts the word "fire" at the random number
-random_string="${random_string:0:$random_number}fire${random_string:$random_number}"
+random_string="${random_string:0:$random_number}${password}${random_string:$random_number}"
 
 echo "$random_string" > soup.txt

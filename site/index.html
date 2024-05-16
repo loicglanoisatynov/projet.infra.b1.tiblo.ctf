@@ -7,13 +7,17 @@
     <title>Guessing Game</title>
 </head>
 <body>
+    <div id="root" style = "text-align: center; padding: 20px; justify-content: center; align-items: center; border: 1px solid black; top: 50%; left: 50%; transform: translate(-50%, -50%); position: absolute;">
     <h1>Guess the Word</h1>
-    <form id="guessForm">
+    <form id="guessForm" style = "text-align: center; justify-content: center; align-items: center; margin: 10px;">
         <label for="guess">Enter your guess:</label>
-        <input type="text" id="guess" name="guess">
+        <input type="text" id="guess" name="guess" style = "margin: 10px;">
         <button type="submit">Submit</button>
+        <div id="result"></div>
+        <p>Flag format : FLAG{flag1_flag2_flag3_flag4}</p>
     </form>
-    <div id="result"></div>
+
+    
 
     <script>
         document.getElementById('guessForm').addEventListener('submit', function(event) {
@@ -40,5 +44,6 @@
             });
         });
     </script>
+    </div>
 </body>
 </html>

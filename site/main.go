@@ -10,7 +10,7 @@ var guessed = false
 func main() {
 	// Serve the HTML file and handle requests
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "index.html")
+		http.ServeFile(w, r, "./site/index.html")
 	})
 
 	// Handle the guess endpoint
@@ -22,7 +22,12 @@ func main() {
 }
 
 func handleGuess(w http.ResponseWriter, r *http.Request) {
-	correctInput := "hello"
+	flag1 := "P0yOPOy0"
+	flag2 := "w0nD3rFul"
+	flag3 := "banane"
+	flag4 := "1337"
+
+	correctInput := "FLAG{" + flag1 + "_" + flag2 + "_" + flag3 + "_" + flag4 + "}"
 
 	r.ParseForm()
 	guess := r.FormValue("guess")
