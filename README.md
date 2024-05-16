@@ -62,50 +62,16 @@ Pour réinitialiser le dossier (suite à une mauvaise manipulation par exemple),
 
 ### Conteneur 1 : MazeOfFiles
 
-Ce CTF est un labyrinthe de fichiers dans lequel vous devrez trouver le fichier `password.txt`. Pour cela, vous devrez vous connecter au conteneur et naviguer dans les fichiers pour trouver le bon fichier, ou trouver un moyen de le chercher plus efficacement.
+Ce CTF est un labyrinthe de fichiers dans lequel vous devrez trouver le fichier `password.txt`. Pour cela, vous devrez vous connecter au conteneur et naviguer dans les fichiers pour trouver le bon fichier, ou trouver un moyen de le chercher plus efficacement. Vous devrez vous y connecter en tant qu'utilisateur `timey` avec pour mot de passe `password1234`.
 
-### Conteneur 2 : MazeOfPorts
+### Conteneur 2 : JunkSoup
 
-Ce CTF est un labyrinthe de ports dans lequel vous devrez trouver le port sur lequel est exposé le service. Pour cela, vous devrez scanner les ports du conteneur pour trouver le bon port, ou trouver un moyen de le chercher plus efficacement.
+Ce CTF consiste en un long fichier de caractères aléatoires dans lequel se cache un flag. Vous devrez trouver un moyen de retrouver le flag dans ce fichier. Vous devrez vous y connecter en tant qu'utilisateur `timey` avec pour mot de passe `password1234`.
 
-### Conteneur 3 : MazeOfSecrets
+### Conteneur 3 : weakSSH
 
-Ce CTF est un labyrinthe de secrets dans lequel vous devrez trouver le secret caché. Pour cela, vous devrez vous connecter au conteneur et chercher le secret, ou trouver un moyen de le chercher plus efficacement.
+Ce CTF est un serveur SSH sur lequel vous devrez vous connecter. Pour cela, vous devrez trouver le mot de passe de l'utilisateur `user`.
 
-### Conteneur 4 : MazeOfUsers
+### Conteneur 4 : DVWA-SQL
 
-Ce CTF est un labyrinthe d'utilisateurs dans lequel vous devrez trouver l'utilisateur caché. Pour cela, vous devrez vous connecter au conteneur et chercher l'utilisateur, ou trouver un moyen de le chercher plus efficacement.
-
-### Conteneur 5 : MazeOfWeb
-
-Ce CTF est un labyrinthe de pages web dans lequel vous devrez trouver la page cachée. Pour cela, vous devrez scanner les pages du site pour trouver la bonne page, ou trouver un moyen de la chercher plus efficacement.
-
-### Conteneur 6 : MazeOfWords
-
-Ce CTF est un labyrinthe de mots dans lequel vous devrez trouver le mot caché. Pour cela, vous devrez vous connecter au conteneur et chercher le mot, ou trouver un moyen de le chercher plus efficacement.
-
-### Conteneur 7 : MazeOfNumbers
-
-Ce CTF est un labyrinthe de nombres dans lequel vous devrez trouver le nombre caché. Pour cela, vous devrez vous connecter au conteneur et chercher le nombre, ou trouver un moyen de le chercher plus efficacement.
-
-### Conteneur 8 : MazeOfImages
-
-Ce CTF est un labyrinthe d'images dans lequel vous devrez trouver l'image cachée. Pour cela, vous devrez vous connecter au conteneur et chercher l'image, ou trouver un moyen de la chercher plus efficacement.
-
-### Conteneur 9 : MazeOfColors
-
-Ce CTF est un labyrinthe de couleurs dans lequel vous devrez trouver la couleur cachée. Pour cela, vous devrez vous connecter au conteneur et chercher la couleur, ou trouver un moyen de la chercher plus efficacement.
-
-### Conteneur 10 : MazeOfSounds
-
-Ce CTF est un labyrinthe de sons dans lequel vous devrez trouver le son caché. Pour cela, vous devrez vous connecter au conteneur et chercher le son, ou trouver un moyen de le chercher plus efficacement.
-
-### Conteneur 11 : MazeOfVideos
-
-Ce CTF est un labyrinthe de vidéos dans lequel vous devrez trouver la vidéo cachée. Pour cela, vous devrez vous connecter au conteneur et chercher la vidéo, ou trouver un moyen de la chercher plus efficacement.
-
-### Conteneur 12 : MazeOfFlags
-
-Ce CTF est un labyrinthe de flags dans lequel vous devrez trouver le flag caché. Pour cela, vous devrez vous connecter au conteneur et chercher le flag, ou trouver un moyen de le chercher plus efficacement.
-
-## Remerciements 🙏
+Ce CTF est une instance de Damn Vulnerable Web Application (DVWA) dans laquelle vous devrez trouver un moyen de récupérer le flag en exploitant une faille SQL. Récupérer le last_name de l'utilisateur `HackMe` pour valider le CTF.

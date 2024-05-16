@@ -23,21 +23,20 @@ RUN echo "root:inferno" | chpasswd
 RUN adduser -D user
 RUN echo "user:user" | chpasswd
 RUN apk add --no-cache sudo
+
 # Exécute richelieu.sh pour obtenir un mot de passe aléatoire pour l'utilisateur "user"
 COPY ./richelieu.txt /home/user/richelieu.txt
 COPY ./richelieu.sh /home/user/richelieu.sh
 RUN chmod +x /home/user/richelieu.sh
 RUN sh /home/user/richelieu.sh
 
-# 82 146 99 229
+
 RUN ssh-keygen -A
 
 # Dans le fichier /etc/ssh/sshd_config, paramétrer le port ouvert sur le 22, et PermitRootLogin sur "no"
 RUN sed -i 's/#Port 22/Port 22/' /etc/ssh/sshd_config
-# Ici : mode dev, on laisse PermitRootLogin sur "yes"
-RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 # Sinon, pour le mode prod, on met PermitRootLogin sur "no"
-# RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config
 RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 EXPOSE 22
 
