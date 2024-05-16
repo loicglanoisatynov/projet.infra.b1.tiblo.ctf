@@ -30,6 +30,10 @@ Une fois le dépôt cloné, vous pouvez vous rendre dans le dossier du projet en
     cd projet.infra.b1.tiblo.ctf
     ```
 
+### Golang
+
+Pour pouvoir utiliser le flag checker, vous aurez besoin de Go. Vous pouvez l'installer en suivant les instructions sur le site officiel de Go. Les instructions sont accessibles ici : https://golang.org/doc/install.
+
 ## Utilisation
 
 **Si vous êtes sous Windows, vous devez lancer Docker Desktop pour pouvoir utiliser Docker. Si vous êtes sous Linux, vous pouvez utiliser Docker directement en ligne de commande.**
@@ -75,3 +79,7 @@ Ce CTF est un serveur SSH sur lequel vous devrez vous connecter. Pour cela, vous
 ### Conteneur 4 : DVWA-SQL
 
 Ce CTF est une instance de Damn Vulnerable Web Application (DVWA) dans laquelle vous devrez trouver un moyen de récupérer le flag en exploitant une faille SQL. Récupérer le last_name de l'utilisateur `HackMe` pour valider le CTF.
+
+### Flag-Checker
+
+Pour valider un CTF, vous devrez utiliser le flag checker. Pour cela, vous devrez vous connecter au conteneur `flag-checker` en tant qu'utilisateur `timey` avec pour mot de passe `password1234`. Vous pourrez ensuite utiliser la commande `./flag-checker.sh` pour valider un flag.
