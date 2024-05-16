@@ -26,7 +26,7 @@ function creerRepertoires {
 }
 
 function hidePassword {
-    motdepasse="password1234"
+    motdepasse="P0yOPOy0"
     # Hide the password in a random directory at the end of the maze
     for i in $(seq 1 $largeurrepertoire); do
         #select a random number between 1 and largeurrepertoire

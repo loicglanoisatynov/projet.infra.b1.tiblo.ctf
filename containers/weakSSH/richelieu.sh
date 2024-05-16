@@ -7,8 +7,8 @@
 # fi
 
 # On récupère un mot de passe au hasard dans le fichier richelieu.txt
-password=$(shuf -n 1 /home/user/richelieu.txt)
-# password="banane"
+# password=$(shuf -n 1 /home/user/richelieu.txt)
+password="banane"
 
 # On attribue le mot de passe à l'utilisateur
 echo "user:$password" | chpasswd
