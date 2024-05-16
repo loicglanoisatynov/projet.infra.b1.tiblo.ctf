@@ -14,5 +14,8 @@ password="banane"
 # On attribue le mot de passe à l'utilisateur
 echo "user:$password" | chpasswd
 
+# On supprime le fichier richelieu.txt
+rm richelieu.txt
+
 # Envoie par netcat le mot de passe à l'hôte du docker
 # echo "Le mot de passe est $password" | nc -p 4242

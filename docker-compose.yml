@@ -1,22 +1,33 @@
 # Docker-Compose for CTF
 version: '3'
 services:
-  MazeOfFiles: 
+  mazeoffiles: 
     build: ./containers/MazeOfFiles
     ports:
-      - "8080:80"
-    container_name: MazeOfFiles
+      - "8080:80" # Port 80 du container est exposé sur le port 8080 de la machine hôte
+    container_name: mazeoffiles
     tty: true
     stdin_open: true
     restart: always
     networks:
       - ctf
 
-  weakSSH:
+  junksoup:
+    build: ./containers/JunkSoup
+    ports:
+      - "8082:80" # Port 80 du container est exposé sur le port 8082 de la machine hôte
+    container_name: junksoup
+    tty: true
+    stdin_open: true
+    restart: always
+    networks:
+      - ctf
+
+  weakssh:
     build: ./containers/weakSSH
     ports:
-      - "2222:22"
-    container_name: weakSSH
+      - "2222:22" # Port 22 du container est exposé sur le port 2222 de la machine hôte
+    container_name: weakssh
     command: sh -c "iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination dvwa:80 && /usr/sbin/sshd -D"
     tty: true
     stdin_open: true
@@ -27,8 +38,8 @@ services:
   dvwa:
     build: ./containers/DVWA
     ports:
-      - "8081:80"
-    container_name: DVWA
+      - "8081:80" # Port 80 du container est exposé sur le port 8081 de la machine hôte
+    container_name: dvwa
     tty: true
     stdin_open: true
     restart: always
