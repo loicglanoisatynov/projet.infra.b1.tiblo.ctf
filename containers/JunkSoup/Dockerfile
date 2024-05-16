@@ -34,3 +34,7 @@ RUN chmod +x /home/user/soup.sh
 # Runs the soup.sh file
 RUN ./soup.sh
 RUN rm soup.sh
+
+RUN echo "Welcome to the Junk Soup!" > /etc/motd
+RUN echo "You have to find the flag in a really, really messy file." >> /etc/motd
+RUN echo "Good luck!" >> /etc/motd

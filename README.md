@@ -85,11 +85,11 @@ Ce CTF consiste en un long fichier de caractères aléatoires dans lequel se cac
 
 ### Conteneur 3 : weakSSH
 
-Ce CTF est un serveur SSH sur lequel vous devrez vous connecter. Pour cela, vous devrez trouver le mot de passe de l'utilisateur `user`.
+Ce CTF est un serveur SSH sur lequel vous devrez vous connecter. Pour cela, vous devrez trouver le mot de passe de l'utilisateur `user`. Pourquoi ne pas essayer une attaque par mot de passe ? Le flag est le mot de passe de l'utilisateur `user`.
 
 ### Conteneur 4 : DVWA-SQL
 
-Ce CTF est une instance de Damn Vulnerable Web Application (DVWA) dans laquelle vous devrez trouver un moyen de récupérer le flag en exploitant une faille SQL. Récupérer le last_name de l'utilisateur `HackMe` pour valider le CTF.
+Ce CTF est une instance de Damn Vulnerable Web Application (DVWA) dans laquelle vous devrez trouver un moyen de récupérer le flag en exploitant une faille SQL. Récupérer le last_name de l'utilisateur `HackMe` pour valider le CTF. 
 
 ### Flag-Checker
 
