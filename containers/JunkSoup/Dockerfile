@@ -1,5 +1,7 @@
 FROM alpine:latest
-RUN adduser -D -s / timey
+RUN adduser -D user
+RUN echo "user:user" | chpasswd
+
 RUN apk add --no-cache --upgrade bash
 RUN apk update && apk add --no-cache \
     openssh \
@@ -16,18 +18,18 @@ RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/s
 # Exécutez le serveur SSH lorsque le conteneur démarre
 CMD ["/usr/sbin/sshd", "-D"]
 
-# Sets the user timey as read-only
-RUN chmod -R 555 /home/timey
+# Sets the user user as read-only
+RUN chmod -R 555 /home/user
 
 # Sets the home directory as the working directory
-WORKDIR /home/timey
+WORKDIR /home/user
 
 # Takes the soup.sh file and copies it to the container
-COPY ./soup.sh /home/timey/soup.sh
+COPY ./soup.sh /home/user/soup.sh
 
 # Changes the permissions of the file to make it executable
-RUN chmod +x /home/timey/soup.sh
-# RUN bash /home/timey/soup.sh
+RUN chmod +x /home/user/soup.sh
+# RUN bash /home/user/soup.sh
 
 # Runs the soup.sh file
 RUN ./soup.sh
